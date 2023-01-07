@@ -1,7 +1,10 @@
 {
-  "name": "videosApp",
+  "name": "MyApp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }
