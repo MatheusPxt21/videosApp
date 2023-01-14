@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="azulmarinho">
     <ion-title>
-      Filmes
+      {{titulo}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
   <ion-list>
 
 
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let filme of listaFilmes">
 
       <ion-item-options side="start">
         <ion-item-option color="danger" (click)="AlertaDescurtirFilme()">
@@ -27,19 +27,19 @@
 
       <ion-item color="dark" lines="full">
         <ion-thumbnail slot="start">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/65NBNqJiaHeCmqDqkCmrRplJXw.jpg" />
+          <img [src]="filme.poster" />
         </ion-thumbnail>
         <ion-label>
           <div class="ion-text-wrap">
-            <h1>Gato de Botas 2: O Último Pedido (2022)</h1>
-            <p>05/01/2023 (BR) 1h 43m</p>
-            <p>Animação, Ação, Aventura, Comédia, Família, Fantasia</p>
+            <h1>{{filme.nome}}</h1>
+            <p>{{filme.lancamento}} {{filme.duracao}}</p>
+            <ion-badge color="cinza" *ngFor="let genero of filme.generos"> {{genero}} </ion-badge>
 
           </div>
         </ion-label>
 
         <ion-chip color="primary" outline>
-          <ion-label >86%</ion-label>
+          <ion-label >{{filme.classificacao}}%</ion-label>
         </ion-chip>
 
       </ion-item>
@@ -52,41 +52,7 @@
 
     </ion-item-sliding>
 
-    <ion-item-sliding>
 
-      <ion-item-options side="start">
-        <ion-item-option color="danger" (click)="AlertaDescurtirFilme()">
-          <ion-icon slot="icon-only" name="heart-dislike-outline"></ion-icon>
-
-        </ion-item-option>
-      </ion-item-options>
-
-      <ion-item color="dark" lines="full">
-        <ion-thumbnail slot="start">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mbYQLLluS651W89jO7MOZcLSCUw.jpg" />
-        </ion-thumbnail>
-        <ion-label>
-          <div class="ion-text-wrap">
-            <h1>Avatar: O Caminho da Água (2022)</h1>
-            <p>15/12/2022 (BR) 3h 12m</p>
-            <p>Ficção científica, Aventura, Ação</p>
-
-          </div>
-        </ion-label>
-
-        <ion-chip color="primary" outline>
-          <ion-label >77%</ion-label>
-        </ion-chip>
-
-      </ion-item>
-
-      <ion-item-options side="end">
-        <ion-item-option color="success" (click)="AlertaCurtirFilme()">
-          <ion-icon slot="icon-only" name="heart-outline" color="dark"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-
-    </ion-item-sliding>
 
 
   </ion-list>
