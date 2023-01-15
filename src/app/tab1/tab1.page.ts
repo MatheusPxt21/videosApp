@@ -1,8 +1,10 @@
+import { DadosService } from './../services/dados.service';
 import { IFilme } from './../models/iFilme.model';
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -21,6 +23,8 @@ export class Tab1Page {
       duracao: '1h 43m',
       generos: ['Animação', 'Ação', 'Aventura', 'Comédia', 'Família', 'Fantasia'],
       classificacao: 86,
+
+      pagina: '/gato-de-botas',
     },
     {
       poster: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mbYQLLluS651W89jO7MOZcLSCUw.jpg',
@@ -29,12 +33,23 @@ export class Tab1Page {
       duracao: '3h 12m',
       generos: ['Ficção científica', 'Aventura', 'Ação'],
       classificacao: 77,
+
+      pagina: '/avatar-caminho-da-agua'
     }
   ];
 
 
 
-  constructor(public alertController: AlertController, public toastController: ToastController) {}
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) {}
+
+    exibirFilme(filme: IFilme){
+      this.dadosService.guardarDados('filme', filme);
+      this.route.navigateByUrl('/dados-filme');
+    }
 
   async AlertaCurtirFilme() {
     const alert = await this.alertController.create({
