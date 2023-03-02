@@ -1,10 +1,13 @@
+import { IListaFilmes, IFilmeApi } from './../models/IFilmeAPI.model';
 import { DadosService } from './../services/dados.service';
-import { IFilme } from './../models/iFilme.model';
+import { IFilme } from '../models/IFilme.model';
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FilmeService } from '../services/filme.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +18,8 @@ export class Tab1Page {
 
   titulo = 'Filmes';
 
-  listaFilmes: IFilme[] = [
+
+  listaVideos: IFilme[] = [
     {
       poster: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/65NBNqJiaHeCmqDqkCmrRplJXw.jpg',
       nome: 'Gato de Botas 2: O Último Pedido (2022)',
@@ -38,15 +42,31 @@ export class Tab1Page {
     }
   ];
 
+  listaFilmes!: IListaFilmes;
+
 
 
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
-    public route: Router) {}
+    public route: Router,
+    public filmeService: FilmeService
+    ) {}
 
-    exibirFilme(filme: IFilme){
+
+  buscarFilmes(evento: any){
+    console.log(evento.target.value);
+    const busca = evento.target.value;
+    if(busca && busca.trim() !== ''){
+      this.filmeService.buscarFilmes(busca).subscribe(dados=>{
+        console.log(dados);
+        this.listaFilmes = dados;
+      })
+    }
+  }
+
+    exibirFilme(filme: IFilmeApi){
       this.dadosService.guardarDados('filme', filme);
       this.route.navigateByUrl('/dados-filme');
     }

@@ -1,4 +1,4 @@
-import { IFilme } from './../models/iFilme.model';
+import { IFilme } from '../models/IFilme.model';
 import { DadosService } from './../services/dados.service';
 import { Component, OnInit } from '@angular/core';
 
