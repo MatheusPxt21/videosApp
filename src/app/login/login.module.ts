@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { GatoDeBotasPageRoutingModule } from './gato-de-botas-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { GatoDeBotasPage } from './gato-de-botas.page';
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GatoDeBotasPageRoutingModule
+    LoginPageRoutingModule
   ],
-  declarations: [GatoDeBotasPage]
+  declarations: [LoginPage]
 })
-export class GatoDeBotasPageModule {}
+export class LoginPageModule {}

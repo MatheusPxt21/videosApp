@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true" color="dark">
+  <div class="center">
+    <ion-card color="dark">
+      <img src="https://github.com/MatheusPxt21/MatheusPxt21/blob/main/Logo.png?raw=true" alt="logo" />
+      <ion-card-title class="ion-text-center">MyApp1</ion-card-title>
+
+      <ion-item color="dark" lines="none">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item color="dark" lines="none">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="login()" expand="full" fill="clean" color="azulmarinho"> LOGIN </ion-button>
+      <ion-button expand="full" fill="clean" color="cinza"> CADASTRAR </ion-button>
+
+    </ion-card>
+  </div>
+
+</ion-content>

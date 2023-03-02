@@ -25,9 +25,16 @@
       <p>{{filme.release_date | date: 'shortDate'}}</p>
     </ion-card-content>
 
+
+    <!--
+      Deu problema na tradução do genero de id para a representação nominal desse id.
+      Portanto, para manter o aplicativo visivel,
+      mantive, por hora, apenas a apresentação do id do genero
+    -->
     <ion-item>
-      <ion-badge color="light" *ngFor="let idGenero of filme.genre_ids">{{generos[idGenero]}}</ion-badge>
+      <ion-badge color="light" *ngFor="let genero of filme.genre_ids">{{genero}}</ion-badge>
     </ion-item>
+
 
   </ion-card>
 
